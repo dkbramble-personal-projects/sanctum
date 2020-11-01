@@ -1,0 +1,524 @@
+{
+    "ongoing": [
+        {
+            "title": "Adventure Time: Distant Lands"
+        },
+        {
+            "title": "Atlanta"
+        },
+        {
+            "title": "Barry"
+        },
+        {
+            "title": "Better Call Saul"
+        },
+        {
+            "title": "I Think You Should Leave"
+        },
+        {
+            "title": "Living With Yourself"
+        },
+        {
+            "title": "Mob Pyshco 100"
+        },
+        {
+            "title": "Rick and Morty"
+        },
+        {
+            "title": "Russian Doll"
+        },
+        {
+            "title": "Steven Universe Future?"
+        },
+        {
+            "title": "Succession"
+        },
+        {
+            "title": "The Boys"
+        },
+        {
+            "title": "The Mandalorian"
+        },
+        {
+            "title": "The Witcher"
+        },
+        {
+            "title": "Westworld"
+        },
+        {
+            "title": "What We Do In The Shadows"
+        }
+    ],
+    "releases": [
+        {
+            "checkDate": "N",
+            "releaseDate": 1605139200,
+            "title": "Playstation 5",
+            "type": "Console"
+        },
+        {
+            "checkDate": "N",
+            "releaseDate": 1605139200,
+            "title": "Demon's Souls",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1605139200,
+            "title": "Marvel's Spider-Man: Miles Morales",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1605139200,
+            "title": "Godfall",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Cris Tales",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1607558400,
+            "title": "Cyberpunk 2077",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Axiom Verge 2",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Babylon's Fall",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Cuphead: The Delicious Last Course",
+            "type": "DLC"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Eastward",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Twelve Minutes",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "The Wolf Among Us 2",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Knuckle Sandwich",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Little Devil Inside",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1605139200,
+            "title": "The Pathless",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1607558400,
+            "title": "The Medium",
+            "type": "Game"
+        },
+        {
+            "checkDate": "N",
+            "releaseDate": 1613865600,
+            "title": "Super Mario 3D World + Bowser's Fury",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1617926400,
+            "title": "Guilty Gear: Strive",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Kena: Bridge of Spirits",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Halo Infinite",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Psychonauts 2",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Horizon Forbidden West",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Backbone",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Solar Ash",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Stray",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Atomic Heart",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "Hogwarts Legacy",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1672444800,
+            "title": "Sea of Stars",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1672444800,
+            "title": "Pragmata",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1672444800,
+            "title": "Suicide Squad: Kill the Justice League",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Bayonetta 3",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Bowlbo",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Elden Ring",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "HANCHO",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Hollow Knight: Silksong",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Metroid Prime 4",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Overwatch 2",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Shovel Knight Dig",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "The Last Night",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Shovel Knight Pocket Dungeon",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Oddity",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Returnal",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Ratchet & Clank: Rift Apart",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Everwild",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": null,
+            "title": "Black Myth: Wukong",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1609372800,
+            "title": "Little Nightmares II",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "GRIME",
+            "type": "Game"
+        },
+        {
+            "checkDate": "Y",
+            "releaseDate": 1640908800,
+            "title": "White Shadows",
+            "type": "Game"
+        },
+        {
+            "checkDate": "N",
+            "releaseDate": "November 12, 2020",
+            "title": "No Man's Sky: Next Generation",
+            "type": "DLC"
+        },
+        {
+            "checkDate": "N",
+            "releaseDate": "November 20, 2020",
+            "title": "K.G.",
+            "type": "Music"
+        }
+    ],
+    "rumors": [
+        {
+            "releaseDate": "???",
+            "title": "BOTW 2",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Deltarune",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "2021",
+            "title": "Destiny 2 Game Pass",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "2021",
+            "title": "God of War 5",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Master Chief Collection (Halo 4)",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Persona 5 Scramble U.S. Release",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Tough Bippy",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "Mid/Late 2021",
+            "title": "Ooblets 1.0",
+            "type": "Game"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Dark Souls 2 Flames of Old",
+            "type": "Mod"
+        },
+        {
+            "releaseDate": "2021",
+            "title": "The French Dispatch",
+            "type": "Movie"
+        },
+        {
+            "releaseDate": "2021",
+            "title": "Hiatus Kaiyote - Mood Valiant",
+            "type": "Music"
+        },
+        {
+            "releaseDate": "???",
+            "title": "The Whitest Boy Alive",
+            "type": "Music"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Disco Elysium TV Show (Sonic Movie Producer)",
+            "type": "TV"
+        },
+        {
+            "releaseDate": "???",
+            "title": "My Friend Pedro TV (John Wick Director)",
+            "type": "TV"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Shenmue Anime",
+            "type": "TV"
+        },
+        {
+            "releaseDate": "???",
+            "title": "The Last of Us HBO",
+            "type": "TV"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Katana Zero DLC",
+            "type": "DLC"
+        },
+        {
+            "releaseDate": "???",
+            "title": "Borderlands 3 Season Pass 2",
+            "type": "DLC"
+        }
+    ],
+    "todos": [
+        {
+            "title": "Cadence of Hyrule",
+            "type": "DLC"
+        },
+        {
+            "title": "Banner Saga 1/2",
+            "type": "Game"
+        },
+        {
+            "title": "Divinity Original Sin 2",
+            "type": "Game"
+        },
+        {
+            "title": "Metal Gear Solid 3: Snake Eater",
+            "type": "Game"
+        },
+        {
+            "title": "Pikmin 3 Deluxe",
+            "type": "Game"
+        },
+        {
+            "title": "Disco Elysium",
+            "type": "Game"
+        },
+        {
+            "title": "Grave of The Fireflies",
+            "type": "Movie"
+        },
+        {
+            "title": "Porco Roso",
+            "type": "Movie"
+        },
+        {
+            "title": "Promare",
+            "type": "Movie"
+        },
+        {
+            "title": "Tenet",
+            "type": "Movie"
+        },
+        {
+            "title": "Upgrade",
+            "type": "Movie"
+        },
+        {
+            "title": "Weathering With You",
+            "type": "Movie"
+        },
+        {
+            "title": "Your Name",
+            "type": "Movie"
+        },
+        {
+            "title": "Baccano",
+            "type": "TV"
+        },
+        {
+            "title": "Lovecraft Country",
+            "type": "Tv"
+        },
+        {
+            "title": "Monster (Sub)",
+            "type": "TV"
+        },
+        {
+            "title": "Schitts Creek",
+            "type": "TV"
+        },
+        {
+            "title": "Blood of Zeus",
+            "type": "TV"
+        },
+        {
+            "title": "The Great Pretender",
+            "type": "TV"
+        }
+    ]
+}

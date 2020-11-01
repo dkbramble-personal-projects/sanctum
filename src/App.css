@@ -1,38 +1,137 @@
 .App {
   text-align: center;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-tabs{
+
+  background-color: #1f1f1f;
+}
+/* .rowrow:nth-child(even) {background: #282c34 !important}
+.rowrow:nth-child(odd) {background: #2aa551 !important} */
+
+.rowrow {
+  border-color: #2aa551 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+td.green {
+  background-color: green;
+}
+td.no {
+  background-color: red;
 }
 
-.App-header {
+.table-stuff {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 20px;
+  color:white;
+}
+
+.table-time {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.redCell {
+  background-color: rgb(255, 173, 173) !important;
+  color: red !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.greenCell {
+  background-color: rgb(156, 221, 156) !important;
+  color: green !important;
+}
+
+.blueCell {
+  background-color:  rgb(119, 183, 255) !important;
+  color: rgb(0, 89, 255) !important;
+}
+
+.purpleCell {
+  background-color: rgb(191, 113, 255) !important;
+  color: rgb(111, 0, 255) !important;
+}
+
+.orangeCell {
+  background-color: rgb(255, 222, 161)!important;
+  color: rgb(255, 94, 0) !important;
+}
+.modalInput {
+  background-color: #282c34 !important;
+  color: white !important;
+}
+.modal-content {
+  color: #CF6679 !important;
+  border-color: #CF6679 !important;
+  background-color: #1f1f1f !important; 
+  border-width: thin !important;
+}
+
+.btn-new {
+  color: #CF6679 !important;
+  border-color: #CF6679 !important;
+  background-color: #1f1f1f !important; 
+  border-width: thin !important;
+}
+.nav-link.active {
+  color: #CF6679 !important;
+  border-color: #CF6679 !important;
+  background-color: #1f1f1f !important; 
+  border-width: thin !important;
+}
+.nav-link:focus {
+  color: #CF6679 !important;
+  border-color: #CF6679 !important;
+  border-width: medium !important;
+  border-bottom-width: thin !important;
+
+}
+.nav-link:hover {
+  color: #CF6679 !important;
+  border-color: #CF6679 !important;
+  border-bottom-width: thin !important;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+
+.nav {
+  border-color: #CF6679 !important;
+  border-bottom-width: medium !important;
+}
+
+
+
+
+.table-header {
+  display: block;
+  font-weight: bold;
+  font-size: 12px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-clear {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  border-color: #CF6679;
+  overflow: hidden;
+  color: #CF6679;
+  border-radius: 25px
 }

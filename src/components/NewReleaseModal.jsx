@@ -33,12 +33,15 @@ async function patchTableData (title, checkDate,type, releaseDate, initialTitle)
 
 function NewReleaseModal(props) {
     const [show, setShow] = useState(false);
+    const [modalTitle, setModalTitle] = useState("New Release");
   
     const [title, setTitle] = useState("");
     const [checkDate, setCheckDate] = useState("N");
     const [type, setType] = useState("Game");
     const [releaseDate, setReleaseDate] = useState("");
     const [initialTitle, setInitialTitle] = useState("");
+
+
   
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -48,6 +51,7 @@ function NewReleaseModal(props) {
         setCheckDate(props.cellValues.checkDate);
         setType(props.cellValues.type);
         setReleaseDate(props.cellValues.releaseDate);
+        setModalTitle("Edit Release");
       }
       setShow(true);
     }
@@ -100,7 +104,7 @@ function NewReleaseModal(props) {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>New Release</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form className="btn-new" onSubmit={handleSubmit}>

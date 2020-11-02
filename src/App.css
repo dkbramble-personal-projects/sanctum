@@ -1,12 +1,13 @@
 .App {
   text-align: center;
-
 }
 
-.nav-tabs{
+.nav-tabs {
 
   background-color: #1f1f1f;
 }
+
+/* Used for alternating table row styles */
 /* .rowrow:nth-child(even) {background: #282c34 !important}
 .rowrow:nth-child(odd) {background: #2aa551 !important} */
 
@@ -17,6 +18,7 @@
 td.green {
   background-color: green;
 }
+
 td.no {
   background-color: red;
 }
@@ -67,10 +69,12 @@ td.no {
   background-color: rgb(255, 222, 161)!important;
   color: rgb(255, 94, 0) !important;
 }
+
 .modalInput {
   background-color: #282c34 !important;
   color: white !important;
 }
+
 .modal-content {
   color: #CF6679 !important;
   border-color: #CF6679 !important;
@@ -108,14 +112,10 @@ td.no {
   font-weight: bold;
 }
 
-
 .nav {
   border-color: #CF6679 !important;
   border-bottom-width: medium !important;
 }
-
-
-
 
 .table-header {
   display: block;

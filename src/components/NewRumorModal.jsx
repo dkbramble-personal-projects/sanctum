@@ -31,6 +31,7 @@ async function patchTableData (title, type, releaseDate, initialTitle) {
 
 function NewRumorModal(props) {
     const [show, setShow] = useState(false);
+    const [modalTitle, setModalTitle] = useState("New Rumor");
   
     const [title, setTitle] = useState("");
     const [type, setType] = useState("Game");
@@ -44,6 +45,7 @@ function NewRumorModal(props) {
         setTitle(props.cellValues.title);
         setType(props.cellValues.type);
         setReleaseDate(props.cellValues.releaseDate);
+        setModalTitle("Edit Rumor");
       }
       setShow(true);
     }
@@ -94,7 +96,7 @@ function NewRumorModal(props) {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>New Release</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form className="btn-new" onSubmit={handleSubmit}>

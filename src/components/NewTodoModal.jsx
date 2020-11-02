@@ -28,6 +28,7 @@ async function patchTableData (title, type, initialTitle) {
 
 function NewTodoModal(props) {
     const [show, setShow] = useState(false);
+    const [modalTitle, setModalTitle] = useState("New Todo");
   
     const [title, setTitle] = useState("");
     const [type, setType] = useState("Game");
@@ -39,6 +40,7 @@ function NewTodoModal(props) {
         setInitialTitle(props.cellValues.title);
         setTitle(props.cellValues.title);
         setType(props.cellValues.type);
+        setModalTitle("Edit Todo");
       }
       setShow(true);
     }
@@ -81,7 +83,7 @@ function NewTodoModal(props) {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>New Todo</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form className="btn-new" onSubmit={handleSubmit}>

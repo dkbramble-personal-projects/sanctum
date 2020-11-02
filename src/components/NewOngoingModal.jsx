@@ -26,6 +26,7 @@ async function patchTableData (title, initialTitle) {
 
 function NewOngoingModal(props) {
     const [show, setShow] = useState(false);
+    const [modalTitle, setModalTitle] = useState("New Ongoing Show");
   
     const [title, setTitle] = useState("");
     const [initialTitle, setInitialTitle] = useState("");
@@ -35,6 +36,7 @@ function NewOngoingModal(props) {
       if (typeof(props.cellValues) != "undefined"){
         setInitialTitle(props.cellValues.title);
         setTitle(props.cellValues.title);
+        setModalTitle("Edit Ongoing Show");
       }
       setShow(true);
     }
@@ -74,7 +76,7 @@ function NewOngoingModal(props) {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>New Ongoing Show</Modal.Title>
+            <Modal.Title>{modalTitle}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <Form className="btn-new" onSubmit={handleSubmit}>

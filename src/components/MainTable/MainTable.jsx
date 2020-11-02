@@ -3,6 +3,7 @@ import React from "react";
 import { useTable,  useFlexLayout }from "react-table";
 import BTable from "react-bootstrap/Table"
 import axios from 'axios';
+import NewReleaseModal from '../NewReleaseModal.jsx'
 
 async function deleteTableData (title) {
   try
@@ -12,17 +13,6 @@ async function deleteTableData (title) {
       alert(err);
   }
 }
-
-//To Edit stuff if I want that later
-// async function patchTableData (title, checkDate,type, releaseDate) {
-//   await axios.patch('http://localhost:8080/releases',    
-//    {
-//     "title": title,
-//     "checkDate": checkDate,
-//     "type": type,
-//     "releaseDate": releaseDate
-//   });
-// }
 
 function CreateTable(data){
   const columns = [
@@ -64,6 +54,14 @@ function CreateTable(data){
             <button type="button" className="btn-block btn-clear" onClick={() => {deleteTableData(cell.row.values.title)}}>
               X
             </button>
+          )
+        },
+        {
+          Header:  ()=><small className="table-header">Edit</small>,
+          accessor: 'editRow',
+          maxWidth: 50,
+          Cell: ({ cell }) => (
+              <NewReleaseModal inTableButton={true} cellValues={cell.row.values} ></NewReleaseModal>
           )
         }
 

@@ -135,3 +135,13 @@ td.no {
   color: #CF6679;
   border-radius: 25px
 }
+
+.btn-clear-blue {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  border-color: #66aecf;
+  overflow: hidden;
+  color: #66aecf;
+  border-radius: 25px
+}

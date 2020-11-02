@@ -15,16 +15,38 @@ async function postTableData (title, type, releaseDate) {
     }
   }
 
+async function patchTableData (title, type, releaseDate, initialTitle) {
+  try{
+    await axios.patch('http://localhost:8080/rumors/' + initialTitle,    
+    {
+      "title": title,
+      "type": type,
+      "releaseDate": releaseDate
+    });
+  } catch (err){
+    alert(err);
+  }
+}
 
-function NewRumorModal() {
+
+function NewRumorModal(props) {
     const [show, setShow] = useState(false);
   
     const [title, setTitle] = useState("");
     const [type, setType] = useState("Game");
     const [releaseDate, setReleaseDate] = useState("");
+    const [initialTitle, setInitialTitle] = useState("");
   
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+      if (typeof(props.cellValues) != "undefined"){
+        setInitialTitle(props.cellValues.title);
+        setTitle(props.cellValues.title);
+        setType(props.cellValues.type);
+        setReleaseDate(props.cellValues.releaseDate);
+      }
+      setShow(true);
+    }
   
     const handleChangeTitle = e => {
       setTitle(e.target.value);
@@ -40,16 +62,29 @@ function NewRumorModal() {
   
     const handleSubmit = (event) => {
         event.preventDefault();
-        postTableData(title, type,releaseDate );
+
+        var date = releaseDate === "" ? null : releaseDate;
+        if (props.inTableButton){
+          patchTableData(title, type,date,initialTitle);
+        } else{
+          postTableData(title, type,date);
+        }
 
     };
     
+    function ModalButton(props){
+      if (props.inTableButton){
+        return <button type="button" className="btn-block btn-clear-blue" onClick={() => {handleShow()}}> X </button>
+      } else {
+        return <Button className="btn-sm btn-new my-4" variant="primary" onClick={handleShow}>
+            New Rumor
+        </Button>
+      }
+    }
   
     return (
-      <>
-        <Button className="btn-sm btn-new my-4" variant="primary" onClick={handleShow}>
-          New Rumor
-        </Button>
+      <div>
+        <ModalButton inTableButton={props.inTableButton}></ModalButton>
   
         <Modal
           show={show}
@@ -65,12 +100,12 @@ function NewRumorModal() {
           <Form className="btn-new" onSubmit={handleSubmit}>
             <Form.Group controlId="formTitle">
               <Form.Label>Title</Form.Label>
-              <Form.Control className="modalInput" type="text" placeholder="Enter title" onChange={handleChangeTitle}/>
+              <Form.Control className="modalInput" value={title}  type="text" placeholder="Enter title" onChange={handleChangeTitle}/>
             </Form.Group>
   
             <Form.Group controlId="selectType">
               <Form.Label>Type</Form.Label>
-              <Form.Control className="modalInput" as="select" onChange={handleChangeType}>
+              <Form.Control className="modalInput" value={type}  as="select" onChange={handleChangeType}>
                 <option>Game</option>
                 <option>Movie</option>
                 <option>Music</option>
@@ -83,13 +118,13 @@ function NewRumorModal() {
   
             <Form.Group controlId="formDate">
               <Form.Label>Release Date</Form.Label>
-              <Form.Control  className="modalInput" type="text" placeholder="Enter date" onChange={handleChangeReleaseDate} />
+              <Form.Control  className="modalInput" value={releaseDate}  type="text" placeholder="Enter date" onChange={handleChangeReleaseDate} />
             </Form.Group>
             <Button variant="primary" type="submit">Submit</Button> 
           </Form>
           </Modal.Body>
         </Modal>
-      </>
+      </div>
     );
   }
 

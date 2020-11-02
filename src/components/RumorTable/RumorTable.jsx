@@ -3,6 +3,7 @@ import React from "react";
 import { useTable,  useFlexLayout }from "react-table";
 import BTable from "react-bootstrap/Table"
 import axios from 'axios';
+import NewRumorModal from '../NewRumorModal.jsx'
 
 async function deleteTableData (title) {
   try
@@ -43,6 +44,14 @@ function CreateTable(data){
             <button type="button" className="btn-block btn-clear" onClick={() => {deleteTableData(cell.row.values.title)}}>
               X
             </button>
+          )
+        },
+        {
+          Header:  ()=><small className="table-header">Edit</small>,
+          accessor: 'editRow',
+          maxWidth: 50,
+          Cell: ({ cell }) => (
+              <NewRumorModal inTableButton={true} cellValues={cell.row.values} ></NewRumorModal>
           )
         }
 

@@ -36,9 +36,7 @@ function App() {
   const [tabKey, setTabKey] = useState(
     sessionStorage.getItem('TabKey') || 'upcomingReleases'
   );
-  console.log(tabKey);
   useEffect(() => {
-    console.log("set to " + tabKey);
     sessionStorage.setItem('TabKey', tabKey);
   }, [tabKey]);
 
@@ -54,7 +52,8 @@ function App() {
         var dateString = "";
         if (new Date(val.releaseDate).getFullYear() < 2010){
           date = new Date((val.releaseDate + 86400) * 1000);
-          val.daysLeft = Math.ceil((val.releaseDate - (today.getTime() / 1000)) / (60 * 60 * 24));
+          console.log(val.title+ ":" + date.getDate());
+          val.daysLeft = Math.ceil((date.getTime() - (today.getTime())) / (1000 * 60 * 60 * 24));
         } else {
           date = new Date(val.releaseDate);
           date.setDate(date.getUTCDate());
@@ -98,7 +97,7 @@ function App() {
       <Tabs className="tab" activeKey={tabKey} unmountOnExit={true} transition={false} onSelect={(k) => setTabKey(k)} id="tableSelection">
         <Tab eventKey="upcomingReleases" title="Upcoming Releases">
           <div className="table-stuff">
-            <NewReleaseModal></NewReleaseModal>
+            <NewReleaseModal inTableButton={false}></NewReleaseModal>
             <div className="table-time">
               <MainTable  data={mainData}/>
             </div>
@@ -106,7 +105,7 @@ function App() {
         </Tab>
         <Tab eventKey="rumors" title="Rumors/Untracked">
           <div className="table-stuff">
-            <NewRumorModal></NewRumorModal>
+            <NewRumorModal inTableButton={false}></NewRumorModal>
             <div className="table-time">
               <RumorTable  data={rumorData}/>
             </div>
@@ -114,7 +113,7 @@ function App() {
         </Tab>
         <Tab eventKey="todos" title="Todos">
           <div className="table-stuff">
-            <NewTodoModal></NewTodoModal>
+            <NewTodoModal inTableButton={false}></NewTodoModal>
             <div className="table-time">
               <TodoTable data={todoData}/>
             </div>
@@ -122,7 +121,7 @@ function App() {
         </Tab>
         <Tab eventKey="ongoing" title="Ongoing Shows">
           <div className="table-stuff">
-            <NewOngoingModal></NewOngoingModal>
+            <NewOngoingModal inTableButton={false}></NewOngoingModal>
             <div className="table-time">
               <OngoingTable data={ongoingData}/>
             </div>

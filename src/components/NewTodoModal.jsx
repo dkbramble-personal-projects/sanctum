@@ -14,14 +14,34 @@ async function postTableData (title, type) {
     }
 }
 
-function NewTodoModal() {
+async function patchTableData (title, type, initialTitle) {
+  try{
+    await axios.patch('http://localhost:8080/todos/' + initialTitle,    
+    {
+      "title": title,
+      "type": type
+    });
+  } catch (err){
+    alert(err);
+  }
+}
+
+function NewTodoModal(props) {
     const [show, setShow] = useState(false);
   
     const [title, setTitle] = useState("");
     const [type, setType] = useState("Game");
+    const [initialTitle, setInitialTitle] = useState("");
   
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+      if (typeof(props.cellValues) != "undefined"){
+        setInitialTitle(props.cellValues.title);
+        setTitle(props.cellValues.title);
+        setType(props.cellValues.type);
+      }
+      setShow(true);
+    }
   
     const handleChangeTitle = e => {
       setTitle(e.target.value);
@@ -33,16 +53,26 @@ function NewTodoModal() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        postTableData(title, type );
+        if (props.inTableButton){
+          patchTableData(title, type, initialTitle);
+        } else{
+          postTableData(title, type);
+        }
     };
     
+    function ModalButton(props){
+      if (props.inTableButton){
+        return <button type="button" className="btn-block btn-clear-blue" onClick={() => {handleShow()}}> X </button>
+      } else {
+        return <Button className="btn-sm btn-new my-4" variant="primary" onClick={handleShow}>
+            New Todo
+        </Button>
+      }
+    }
   
     return (
-      <>
-        <Button className="btn-sm btn-new my-4" variant="primary" onClick={handleShow}>
-          New Todo
-        </Button>
-  
+      <div>
+        <ModalButton inTableButton={props.inTableButton}></ModalButton>
         <Modal
           show={show}
           className="btn-new"
@@ -57,12 +87,12 @@ function NewTodoModal() {
           <Form className="btn-new" onSubmit={handleSubmit}>
             <Form.Group controlId="formTitle">
               <Form.Label>Title</Form.Label>
-              <Form.Control className="modalInput" type="text" placeholder="Enter title" onChange={handleChangeTitle}/>
+              <Form.Control className="modalInput" value={title}  type="text" placeholder="Enter title" onChange={handleChangeTitle}/>
             </Form.Group>
   
             <Form.Group controlId="selectType">
               <Form.Label>Type</Form.Label>
-              <Form.Control className="modalInput" as="select" onChange={handleChangeType}>
+              <Form.Control className="modalInput" value={type}  as="select" onChange={handleChangeType}>
                 <option>Game</option>
                 <option>Movie</option>
                 <option>Music</option>
@@ -76,7 +106,7 @@ function NewTodoModal() {
           </Form>
           </Modal.Body>
         </Modal>
-      </>
+      </div>
     );
   }
 

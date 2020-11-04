@@ -1,7 +1,7 @@
 
-import CreateTable from "./MainTable.jsx";
+import CreateTable from "./SpoofyTable.jsx";
 
-function MainTable (props){ 
+function SpoofyTable (props){ 
     if (typeof props.data !== 'undefined'){
       if(props.data.length > 0){
         return CreateTable(props.data);
@@ -9,4 +9,4 @@ function MainTable (props){
     } 
     return null;
 }
-export default MainTable;
+export default SpoofyTable;

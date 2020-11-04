@@ -39,8 +39,6 @@ td.no {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: 10px;
   color: white;
 }
@@ -84,10 +82,11 @@ td.no {
 
 .btn-new {
   color: #CF6679 !important;
-  border-color: #CF6679 !important;
+  border-color: #706e6e !important;
   background-color: #1f1f1f !important; 
   border-width: thin !important;
 }
+
 .nav-link.active {
   color: #CF6679 !important;
   border-color: #CF6679 !important;

@@ -2,30 +2,24 @@
 import React from "react";
 import { useTable,  useFlexLayout }from "react-table";
 import BTable from "react-bootstrap/Table"
-import axios from 'axios';
-import NewRumorModal from '../NewRumorModal.jsx'
-
-async function deleteTableData (title) {
-  try
-  {
-    await axios.delete('http://localhost:8080/rumors/' + title);
-  } catch (err) {
-      alert(err);
-  }
-}
 
 function CreateTable(data){
-  // console.log(data);
   const columns = [
     {
-      Header: ()=><small className="table-header">Rumors</small>,
-      accessor: 'rumors',
+      Header: ()=><small className="table-header">Releases</small>,
+      accessor: 'releases',
       columns: [
         {
-          Header: ()=><small className="table-header">Title</small>,
-          accessor: 'title',
+          Header: ()=><small className="table-header">Artist</small>,
+          accessor: 'artist',
           width: 300,
         },
+        {
+          Header: ()=><small className="table-header">Title</small>,
+          accessor: 'name',
+          width: 300,
+        },
+
         {
           Header:  ()=><small className="table-header">Type</small>,
           accessor: 'type',
@@ -33,26 +27,8 @@ function CreateTable(data){
         },
         {
           Header:  ()=><small className="table-header">Release Date</small>,
-          accessor: 'releaseDate',
+          accessor: 'release_date',
           maxWidth: 100
-        },
-        {
-          Header:  ()=><small className="table-header">Delete</small>,
-          accessor: 'deleteRow',
-          maxWidth: 50,
-          Cell: ({ cell }) => (
-            <button type="button" className="btn-block btn-clear" onClick={() => {deleteTableData(cell.row.values.title)}}>
-              X
-            </button>
-          )
-        },
-        {
-          Header:  ()=><small className="table-header">Edit</small>,
-          accessor: 'editRow',
-          maxWidth: 50,
-          Cell: ({ cell }) => (
-              <NewRumorModal inTableButton={true} cellValues={cell.row.values} ></NewRumorModal>
-          )
         }
 
       ],

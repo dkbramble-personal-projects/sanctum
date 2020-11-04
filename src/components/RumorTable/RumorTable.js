@@ -2,12 +2,11 @@
 import CreateTable from "./RumorTable.jsx";
 
 function RumorTable (props){ 
-
-    if (typeof props.data !== 'undefined'){
+  if (typeof props.data !== 'undefined'){
+    if(props.data.length > 0){
       return CreateTable(props.data);
-    } 
-    else{
-      return null;
     }
+  } 
+  return null;
 }
 export default RumorTable;

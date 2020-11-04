@@ -124,6 +124,7 @@ function App() {
 
 
     if (data.length < 1){
+      //TODO: Find a better way to chain promises conditionally. Or be lazy and add another promise if you hit artist max
       await getSpoofyArtists("").then((artists) => {
         if (typeof artists !== 'undefined'){
           var arArr = [];
@@ -234,6 +235,9 @@ function App() {
 
       if (!stop){
         var promises = [];
+        if (artistIdArray.length % 50 === 0){
+          alert("Artist count may have hit max: " + artistIdArray.length);
+        }
         artistIdArray.forEach(async (id) => {
           promises.push(getSpoofyReleases(id).then((releases) => {
             if (typeof releases !== 'undefined'){

@@ -31,9 +31,18 @@ function SortTitle(a, b){
   if(a.title > b.title) { return 1; }
   return 0;
 }
-function SortArtist(a, b){
-  if(a.artist < b.artist) { return -1; }
-  if(a.artist > b.artist) { return 1; }
+// function SortArtist(a, b){
+//   if(a.artist < b.artist) { return -1; }
+//   if(a.artist > b.artist) { return 1; }
+//   return 0;
+// }
+
+function SortReleaseDate(a, b){
+  var aDate = new Date(a.release_date);
+  var bDate = new Date(b.release_date);
+
+  if(aDate > bDate) { return -1; }
+  if(aDate < bDate) { return 1; }
   return 0;
 }
 function App() {
@@ -281,7 +290,7 @@ function App() {
           dataArray.push(rumorDataResponse);
           dataArray.push(todoDataResponse);
           dataArray.push(ongoingDataResponse);
-          jsonDict.sort(SortArtist);
+          jsonDict.sort(SortReleaseDate);
           dataArray.push(jsonDict);
           if (data.length < 1){
             setData(dataArray);

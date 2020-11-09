@@ -14,6 +14,7 @@ async function postTableData (title) {
 }
 
 async function patchTableData (title, initialTitle) {
+  initialTitle = initialTitle.replaceAll("/", "%2F");
   try{
     await axios.patch('http://localhost:8080/ongoing/' + initialTitle,    
     {

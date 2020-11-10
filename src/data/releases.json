@@ -19,7 +19,7 @@
       "title": "Living With Yourself"
     },
     {
-      "title": "Mob Pyshco 100"
+      "title": "Mob Psycho 100"
     },
     {
       "title": "Rick and Morty"
@@ -50,12 +50,15 @@
     },
     {
       "title": "The Great Pretender"
+    },
+    {
+      "title": "Blood of Zeus"
     }
   ],
   "releases": [
     {
       "checkDate": "N",
-      "releaseDate": 1605139200,
+      "releaseDate": "Nov 12 2020",
       "title": "Playstation 5",
       "type": "Console"
     },
@@ -352,6 +355,18 @@
       "releaseDate": "November 20, 2020",
       "title": "K.G.",
       "type": "Music"
+    },
+    {
+      "checkDate": "N",
+      "releaseDate": "November 17, 2020",
+      "title": "Halo 4",
+      "type": "Game"
+    },
+    {
+      "checkDate": "N",
+      "releaseDate": "November 19, 2020",
+      "title": "Adventure Time: Distant Lands - Obsidian",
+      "type": "TV"
     }
   ],
   "rumors": [
@@ -373,11 +388,6 @@
     {
       "releaseDate": "2021",
       "title": "God of War 5",
-      "type": "Game"
-    },
-    {
-      "releaseDate": "???",
-      "title": "Master Chief Collection (Halo 4)",
       "type": "Game"
     },
     {
@@ -495,10 +505,6 @@
       "type": "TV"
     },
     {
-      "title": "Lovecraft Country",
-      "type": "Tv"
-    },
-    {
       "title": "Monster (Sub)",
       "type": "TV"
     },
@@ -507,7 +513,7 @@
       "type": "TV"
     },
     {
-      "title": "Blood of Zeus",
+      "title": "Lovecraft Country",
       "type": "TV"
     }
   ]

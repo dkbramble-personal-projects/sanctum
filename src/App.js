@@ -76,13 +76,21 @@ function App() {
         var today = new Date();
         var date = new Date();
         var dateString = "";
+        const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
         if (new Date(val.releaseDate).getFullYear() < 2010){
-          date = new Date((val.releaseDate + 86400) * 1000);
-          val.daysLeft = Math.ceil((date.getTime() - (today.getTime())) / (1000 * 60 * 60 * 24));
+          date = new Date((val.releaseDate) * 1000);
+          date.setDate(date.getUTCDate());
+          date.setHours(0,0,0,0);
+          today.setDate(today.getUTCDate());
+          today.setHours(0,0,0,0);
+          val.daysLeft = Math.round(Math.abs((date - today) / oneDay));
         } else {
           date = new Date(val.releaseDate);
           date.setDate(date.getUTCDate());
-          val.daysLeft = Math.ceil((date.getTime() - (today.getTime())) / (1000 * 60 * 60 * 24));
+          date.setHours(0,0,0,0);
+          today.setDate(today.getUTCDate());
+          today.setHours(0,0,0,0);
+          val.daysLeft = Math.round(Math.abs((date - today) / oneDay));
         }
         dateString = date.toDateString().slice(4)
         val.releaseDate = dateString;

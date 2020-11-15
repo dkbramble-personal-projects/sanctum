@@ -26,6 +26,14 @@ function SortTypeAndTitle(a, b){
   return 0;
 }
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 function SortTitle(a, b){
   if(a.title < b.title) { return -1; }
   if(a.title > b.title) { return 1; }
@@ -126,13 +134,14 @@ function App() {
         "https://api.spotify.com/v1/me/following?type=artist&limit=50" + bonus,
         config
       ).then((s)=> {
+        //console.log(s['data']['artists']['items']);
         return s['data']['artists']['items'];
       }).catch(console.log); 
     };
 
     async function getSpoofyReleases (id) {
       return axios.get( 
-        "https://api.spotify.com/v1/artists/" + id + "/albums?include_groups=album,single&country=US&limit=5",
+        "https://api.spotify.com/v1/artists/" + id + "/albums?include_groups=album,single&country=US&limit=50",
         config
       ).then((s)=> {
         return s['data']['items'];
@@ -256,6 +265,7 @@ function App() {
           alert("Artist count may have hit max: " + artistIdArray.length);
         }
         artistIdArray.forEach(async (id) => {
+          sleep(3); //spoofy api sucks, have to make like 5000 calls to get the right information and they have call rate limits.
           promises.push(getSpoofyReleases(id).then((releases) => {
             if (typeof releases !== 'undefined'){
               var releaseArr = [];
@@ -306,7 +316,7 @@ function App() {
 
         });
       } else {
-        var dataArray = []; //cool naming conventions huh
+        var dataArray = [];
         dataArray.push(mainDataResponse);
         dataArray.push(rumorDataResponse);
         dataArray.push(todoDataResponse);

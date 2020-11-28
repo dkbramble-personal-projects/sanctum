@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter} from 'react-router-dom'
 import { Tab, Tabs} from 'react-bootstrap';
-import axios from 'axios';
 import './App.css';
 import MainTable from './components/MainTable';
 import RumorTable from './components/RumorTable';
@@ -14,6 +13,7 @@ import NewTodoModal from './components/NewTodoModal.jsx';
 import NewOngoingModal from './components/NewOngoingModal.jsx';
 import { client_id } from './data/spoofy_env';
 import './data/releases.json'
+import { spoofyData } from './spoofyService.js';
 
 function SortTypeAndTitle(a, b){
   if(a.type < b.type) { return -1; }
@@ -121,156 +121,22 @@ function App() {
     var todoDataResponse = json['todos'].sort(SortTypeAndTitle);
     var ongoingDataResponse = json['ongoing'].sort(SortTitle);
 
-    const config = {
-      headers: { Authorization: `Bearer ${spoofyToken}` }
-    };
+    var dataArray = [];
+    dataArray.push(mainDataResponse);
+    dataArray.push(rumorDataResponse);
+    dataArray.push(todoDataResponse);
+    dataArray.push(ongoingDataResponse);
 
-    var artistDictionary = {};
-    var artistArray = [];
-    var artistIdArray = [];
+    if (data.length < 1 && spoofyToken !== null){
+      const config = {
+        headers: { Authorization: `Bearer ${spoofyToken}` }
+      };
 
-    function storeSpoofyArtists (artists) {
-      if (typeof artists !== 'undefined'){
-        var arArr = [];
-        artists.forEach((artist) => {
-          artistDictionary[artist.id] = artist.name;
-          arArr.push(artist.id);
-          artistIdArray.push(artist.id);
-        });
-        artistArray.push(arArr.pop());
-        return false;
-      } else {
-        return true;
-      }
-    };
-
-    async function getSpoofyArtists (bonus) {
-      return axios.get( 
-        "https://api.spotify.com/v1/me/following?type=artist&limit=50" + bonus,
-        config
-      ).then((artistData)=> {
-        var artists = artistData['data']['artists']['items'];
-        return storeSpoofyArtists(artists);
-      }).catch(console.log); 
-    };
-
-    async function getSpoofyReleases (id) {
-      var stop = false;
-      var artistList = [];
-      var offset = 0; // needed too get more than 50 releases since I can't filter by release date
-      while (!stop){
-        var getUrl = "https://api.spotify.com/v1/artists/" + id + "/albums?include_groups=album,single&country=US&limit=50";
-        if (offset > 0){
-          getUrl = getUrl + "&offset=" + offset;
-        }
-
-        var getResults = await axios.get( 
-          getUrl,
-          config
-        ).then((s)=> {
-          return s['data']['items'];
-        }).catch(console.log);
-
-        artistList.push(getResults); 
-
-        if (artistList[0].length % 50 !== 0 || getResults.length === 0){
-          stop = true;
-        } else {
-          //NOTE: if you ever see repeats, its probably because of the offset. Not sure when the next index is relative to the offset.
-          offset = offset + 49;
-        }
-      }
-
-
-      return artistList[0];
-    };
-
-
-    if (data.length < 1){
-      var stop = false;
-      await getSpoofyArtists("").then((stopGet) => {
-         stop = stopGet;
-      });
-
-      var artistLimit = false;
-      var count = 0;
-      while (!stop && !artistLimit){
-        var bonus = "&after=" + artistArray[count];
-        if (typeof artistArray[count] !== 'undefined'){
-          await getSpoofyArtists(bonus);
-        } else {
-          artistLimit = true;
-        }
-        count = count + 1;
-      }
-      
-      if (!stop){
-        var promises = [];
-        artistIdArray.forEach(async (id) => {
-          //console.log(artistDictionary[id]);
-          sleep(10); //spoofy api sucks, have to make like 5000 calls to get the right information and they have call rate limits.
-          promises.push(getSpoofyReleases(id).then((releases) => {
-            //console.log(releases);
-            if (typeof releases !== 'undefined'){
-              var releaseArr = [];
-              releases.forEach((release)=>{
-                //console.log(release);
-                var shouldGet = false;
-                if (release['release_date_precision'] === "day"){
-                  var releaseDate = new Date(release['release_date']);
-                  var currentDate = new Date();
-                  releaseDate.setDate(releaseDate.getDate());
-                  currentDate.setDate(currentDate.getDate() - 14);
-
-                  if (currentDate <= releaseDate){
-                      shouldGet = true;
-                  }
-                }
-                if (shouldGet){
-                  var date = new Date(release['release_date']);
-                  date.setDate(date.getDate() + 1);
-                  var dateString = date.toDateString().slice(4)
-                  var strJson = "{ \"name\" : \"" + release['name'] + "\", \"artist\" : \"" + artistDictionary[id] + "\", \"type\" : \"" + release['album_type'] + "\", \"release_date\" : \"" + dateString + "\"}"; 
-                  releaseArr.push(JSON.parse(strJson));
-                }
-              });
-
-              return releaseArr;
-            }
-            return [];
-          }));
-        })
-        Promise.all(promises).then((releaseSet) => {
-          var jsonDict = [];
-          releaseSet.forEach((releases) => {
-            releases.forEach((release) => {
-              if (release.length !== 0){
-                jsonDict.push(release);
-              }
-            });
-          });
-          var dataArray = [];
-          dataArray.push(mainDataResponse);
-          dataArray.push(rumorDataResponse);
-          dataArray.push(todoDataResponse);
-          dataArray.push(ongoingDataResponse);
-          jsonDict.sort(SortReleaseDate);
-          dataArray.push(jsonDict);
-          if (data.length < 1){
-            setData(dataArray);
-          }
-
-        });
-      } else {
-        var dataArray = [];
-        dataArray.push(mainDataResponse);
-        dataArray.push(rumorDataResponse);
-        dataArray.push(todoDataResponse);
-        dataArray.push(ongoingDataResponse);
-        if (data.length < 1){
-          setData(dataArray);
-        }
-      }
+      //pushes spotify data to the dataArray and sets the data state
+      spoofyData(sleep, config, SortReleaseDate, dataArray, setData);
+    } 
+    else if (data.length < 1) {
+        setData(dataArray);
     }
   }
 

@@ -129,153 +129,99 @@ function App() {
     var artistArray = [];
     var artistIdArray = [];
 
+    function storeSpoofyArtists (artists) {
+      if (typeof artists !== 'undefined'){
+        var arArr = [];
+        artists.forEach((artist) => {
+          artistDictionary[artist.id] = artist.name;
+          arArr.push(artist.id);
+          artistIdArray.push(artist.id);
+        });
+        artistArray.push(arArr.pop());
+        return false;
+      } else {
+        return true;
+      }
+    };
+
     async function getSpoofyArtists (bonus) {
       return axios.get( 
         "https://api.spotify.com/v1/me/following?type=artist&limit=50" + bonus,
         config
-      ).then((s)=> {
-        //console.log(s['data']['artists']['items']);
-        return s['data']['artists']['items'];
+      ).then((artistData)=> {
+        var artists = artistData['data']['artists']['items'];
+        return storeSpoofyArtists(artists);
       }).catch(console.log); 
     };
 
     async function getSpoofyReleases (id) {
-      return axios.get( 
-        "https://api.spotify.com/v1/artists/" + id + "/albums?include_groups=album,single&country=US&limit=50",
-        config
-      ).then((s)=> {
-        return s['data']['items'];
-      }).catch(console.log); 
+      var stop = false;
+      var artistList = [];
+      var offset = 0; // needed too get more than 50 releases since I can't filter by release date
+      while (!stop){
+        var getUrl = "https://api.spotify.com/v1/artists/" + id + "/albums?include_groups=album,single&country=US&limit=50";
+        if (offset > 0){
+          getUrl = getUrl + "&offset=" + offset;
+        }
+
+        var getResults = await axios.get( 
+          getUrl,
+          config
+        ).then((s)=> {
+          return s['data']['items'];
+        }).catch(console.log);
+
+        artistList.push(getResults); 
+
+        if (artistList[0].length % 50 !== 0 || getResults.length === 0){
+          stop = true;
+        } else {
+          //NOTE: if you ever see repeats, its probably because of the offset. Not sure when the next index is relative to the offset.
+          offset = offset + 49;
+        }
+      }
+
+
+      return artistList[0];
     };
 
 
     if (data.length < 1){
-      //TODO: Find a better way to chain promises conditionally. Or be lazy and add another promise if you hit artist max
-      await getSpoofyArtists("").then((artists) => {
-        if (typeof artists !== 'undefined'){
-          var arArr = [];
-          artists.forEach((artist) => {
-            artistDictionary[artist.id] = artist.name;
-            arArr.push(artist.id);
-            artistIdArray.push(artist.id);
-          });
-          artistArray.push(arArr.pop());
-        } else {
-          // alert("Get a new token");
-        }
+      var stop = false;
+      await getSpoofyArtists("").then((stopGet) => {
+         stop = stopGet;
       });
 
-      var bonus = "&after=" + artistArray[0];
-      var stop = false;
-      if (typeof artistArray[0] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          } 
-        });
-      } else {
-        stop = true;
+      var artistLimit = false;
+      var count = 0;
+      while (!stop && !artistLimit){
+        var bonus = "&after=" + artistArray[count];
+        if (typeof artistArray[count] !== 'undefined'){
+          await getSpoofyArtists(bonus);
+        } else {
+          artistLimit = true;
+        }
+        count = count + 1;
       }
-
-
-      bonus = "&after=" + artistArray[1];
-      if (typeof artistArray[1] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          }
-        });
-      }
-
-      bonus = "&after=" + artistArray[2];
-      if (typeof artistArray[2] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          } 
-        });
-      }
-
-      bonus = "&after=" + artistArray[3];
-      if (typeof artistArray[3] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          } 
-        });
-      }
-
-      bonus = "&after=" + artistArray[4];
-      if (typeof artistArray[4] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          } 
-        });
-      }
-
-      bonus = "&after=" + artistArray[5];
-      if (typeof artistArray[5] !== 'undefined'){
-        await getSpoofyArtists(bonus).then((artists) => {
-          if (typeof artists !== 'undefined'){
-            var arArr = [];
-            artists.forEach((artist) => {
-              artistDictionary[artist.id] = artist.name;
-              arArr.push(artist.id);
-              artistIdArray.push(artist.id);
-            });
-            artistArray.push(arArr.pop());
-          } 
-        });
-      }
-
+      
       if (!stop){
         var promises = [];
-        if (artistIdArray.length % 50 === 0){
-          alert("Artist count may have hit max: " + artistIdArray.length);
-        }
         artistIdArray.forEach(async (id) => {
-          sleep(3); //spoofy api sucks, have to make like 5000 calls to get the right information and they have call rate limits.
+          //console.log(artistDictionary[id]);
+          sleep(10); //spoofy api sucks, have to make like 5000 calls to get the right information and they have call rate limits.
           promises.push(getSpoofyReleases(id).then((releases) => {
+            //console.log(releases);
             if (typeof releases !== 'undefined'){
               var releaseArr = [];
               releases.forEach((release)=>{
+                //console.log(release);
                 var shouldGet = false;
                 if (release['release_date_precision'] === "day"){
                   var releaseDate = new Date(release['release_date']);
                   var currentDate = new Date();
                   releaseDate.setDate(releaseDate.getDate());
                   currentDate.setDate(currentDate.getDate() - 14);
+
                   if (currentDate <= releaseDate){
                       shouldGet = true;
                   }

@@ -59,6 +59,9 @@
         },
         {
             "title": "Vinland Saga"
+        },
+        {
+            "title": "Space Force"
         }
     ],
     "releases": [
@@ -88,7 +91,7 @@
         },
         {
             "checkDate": "Y",
-            "releaseDate": 1609372800,
+            "releaseDate": 1640908800,
             "title": "Cuphead: The Delicious Last Course",
             "type": "DLC"
         },
@@ -100,7 +103,7 @@
         },
         {
             "checkDate": "Y",
-            "releaseDate": 1609372800,
+            "releaseDate": 1640908800,
             "title": "Twelve Minutes",
             "type": "Game"
         },
@@ -280,7 +283,7 @@
         },
         {
             "checkDate": "Y",
-            "releaseDate": null,
+            "releaseDate": 1625011200,
             "title": "Returnal",
             "type": "Game"
         },
@@ -304,7 +307,7 @@
         },
         {
             "checkDate": "Y",
-            "releaseDate": 1609372800,
+            "releaseDate": 1613001600,
             "title": "Little Nightmares II",
             "type": "Game"
         },
@@ -321,22 +324,10 @@
             "type": "Game"
         },
         {
-            "checkDate": "N",
-            "releaseDate": "November 20, 2020",
-            "title": "K.G.",
-            "type": "Music"
-        },
-        {
-            "checkDate": "N",
-            "releaseDate": "November 17, 2020",
-            "title": "Halo 4",
+            "checkDate": "Y",
+            "releaseDate": 1648684800,
+            "title": "Fraymakers",
             "type": "Game"
-        },
-        {
-            "checkDate": "N",
-            "releaseDate": "November 19, 2020",
-            "title": "Adventure Time: Distant Lands - Obsidian",
-            "type": "TV"
         }
     ],
     "rumors": [
@@ -435,10 +426,6 @@
             "type": "Game"
         },
         {
-            "title": "Disco Elysium",
-            "type": "Game"
-        },
-        {
             "title": "Grave of The Fireflies",
             "type": "Movie"
         },
@@ -475,10 +462,6 @@
             "type": "TV"
         },
         {
-            "title": "Schitts Creek",
-            "type": "TV"
-        },
-        {
             "title": "No Man's Sky: Next Generation",
             "type": "Game"
         },
@@ -488,6 +471,22 @@
         },
         {
             "title": "Assassin's Creed Valhalla",
+            "type": "Game"
+        },
+        {
+            "title": "Jedi Fallen Order",
+            "type": "Game"
+        },
+        {
+            "title": "BONEWORKS",
+            "type": "Game"
+        },
+        {
+            "title": "Pistol Whip",
+            "type": "Game"
+        },
+        {
+            "title": "Control Ultimate Edition",
             "type": "Game"
         }
     ]

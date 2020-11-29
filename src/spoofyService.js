@@ -16,12 +16,14 @@ async function getSpoofyReleases (id, config) {
       ).then((s)=> {
         return s['data']['items'];
       }).catch(console.log);
-
       artistList.push(getResults); 
 
-      if ((artistList.length > 0 && artistList[0].length % 50 !== 0) || getResults.length === 0){
-        stop = true;
-      } else {
+      stop = getResults.length === 0;
+
+      if (artistList.length > 0 && !stop){
+        stop = artistList[0].length % 50 !== 0;
+      } 
+      if (!stop){
         //NOTE: if you ever see repeats, its probably because of the offset. Not sure when the next index is relative to the offset.
         offset = offset + 49;
       }
